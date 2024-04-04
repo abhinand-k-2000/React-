@@ -1,31 +1,48 @@
-/*
 
-<div id="parent">
-    <div id="child">
-        <h1>Hello</h1>
-        <h2>React</h1>
+import React from "react";
+import ReactDOM from "react-dom/client";  
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+
+
+// //jsx
+// const heading = <p id="heading">Welcome</p>
+
+// console.log(heading)
+
+const elem = (
+    <h3>This ia an element {typeof num}</h3>
+    
+)
+
+var num = 10;
+
+const Heading = () => {
+   
+    return (
+        <div>
+    <h1 className="heading">This is a functional component</h1>
+    <h5>{num}</h5>
     </div>
-</div>
+    )
+}
 
-*/
+const ChildComponent = () => {
+    return (
+        <p> This is from child component</p>
+    )
+}
 
-const parent = React.createElement(
-  "div",
-  { id: "parent" },[
-  React.createElement(
-    "div",
-    { id: "child1" },[
-    React.createElement("h1", {}, "Hello"),
-    React.createElement("p", {}, "This is from react")
-    ]
-  ),
-  React.createElement("div", {id: "child2"}, [
-    React.createElement("h2", {}, "React core")
-  ])
-]
-);
+const ParentComponent = () => (
+    <div className="container">
+        <Heading/>
+        {ChildComponent()}
+        {<ChildComponent></ChildComponent>}
+        {<ChildComponent />}
+        <p className="para">This is the parent</p>
+        {elem}
+        {num}
+    </div>
+)
 
-// const heading = React.createElement("h1", {id: "heading"}, "This is the inception");
-console.log("parent", parent);
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(<ParentComponent/>)    
