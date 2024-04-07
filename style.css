@@ -1,5 +1,11 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
 .header {
     display: flex;
+    /* width: 100%; */
     justify-content: space-between;
     align-items: center;
     background-color: #f0f0f0;
@@ -25,7 +31,9 @@
 }
 
 .search{
-    padding: 0.5em;
+    padding: 1em;
+    display: flex;
+
 }
 
 .rest-card{
@@ -49,6 +57,7 @@
 .rest-container{
     display: flex;
     flex-wrap: wrap;
+    margin-left: 5em;
 }
 
 .footer{
@@ -64,9 +73,41 @@
     cursor: pointer;
     padding: 0.5em;
     margin-top: 0.5em;
+    margin-left: 1em;
 }
 .all-btn{
     cursor: pointer;
-    margin-left: 0.5em;
+    margin-left: 1em;
     padding: 0.5em;
+}
+.search-btn{
+    cursor: pointer;
+    padding: 0.5em;
+    margin-left: 0.5em;
+}
+
+.shimmer-container{
+    margin-top: 4em;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5em;
+}
+.shimmer-card{
+    width: 18em;
+    height: 25em;
+    background-color: #f0f0f0;
+    border: 1px solid;
+    padding: 0.5em;
+    margin: 1em;
+}
+.shimmer-img{
+    width: 18em;
+    height: 15em;
+    background-color:#bdbcbb;
+}
+
+.login-btn{
+    padding: 0 1em;
+    font-weight: bold;
+    cursor: pointer;
 }

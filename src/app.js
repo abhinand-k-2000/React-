@@ -14,7 +14,7 @@ const AppLayout = () => {
     return (
         <div>
             <Header />
-            <Counter />
+            {/* <Counter /> */}
             <Body />
             <Footer /> 
         </div>
