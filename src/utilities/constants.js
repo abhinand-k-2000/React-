@@ -4,3 +4,5 @@ export const LOGO_URI =
 export const IMG_URI = 
 "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
+export const MENU_URI = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.1556686&lng=75.891155&restaurantId="
+
