@@ -17,15 +17,16 @@ const Body = () => {
       
   async function fetchData () {
     try {
-      // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.21890&lng=75.72680&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.21890&lng=75.72680&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
     // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126255&lng=77.04108959999999&page_type=DESKTOP_WEB_LISTING")
     // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.1556686&lng=75.891155&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.1556686&lng=75.891155&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.1556686&lng=75.891155&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
     const json = await data.json()
+    console.log(json.data)
     const restaurants = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
 
     // const restaurants = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    console.log("restaurant", json?.data)
+    // console.log("restaurant", json?.data)  
     // console.log("rest", restaurants)
     setListOfRestaurant(restaurants)
     setFilteredRestaurants(restaurants)
@@ -48,11 +49,11 @@ const Body = () => {
     <div className="body-container">
       <div className="search">
 
-        <input type="text" value={searchData} onChange={(e)=>{
+        <input type="text" className="p-1 m-3 border-2 rounded-lg border-rose-500" value={searchData} onChange={(e)=>{
           setSearchData(e.target.value)
         }}/>
 
-        <button className="search-btn" onClick={()=> {
+        <button className="search-btn bg-orange-300 px-3 py-2 rounded-lg" onClick={()=> {
         const filteredRestaurants = listOfRestaurant.filter((rest)=> rest.info.name.toLowerCase().includes(searchData.toLowerCase()))
         setFilteredRestaurants(filteredRestaurants)
 
@@ -60,19 +61,21 @@ const Body = () => {
       
       
         <button       
-          className="filter-btn"
+          className="filter-btn m-5 bg-blue-500 px-3 py-2 rounded-lg text-white"
           onClick={() => {     
             const filteredList = listOfRestaurant.filter(
-              (rest) => rest.info.avgRating >= 4.4
+              (rest) => rest.info.avgRating >= 4.2
             );
-            setFilteredRestaurants(filteredList);
+              setFilteredRestaurants(filteredList);
+            
+            
           }}
         >
-          Top Rated{" "}
+          Top Rated Resatuarants
         </button>
 
         </div>
-      <div className="rest-container">
+      <div className="rest-container flex flex-wrap p-3 m-3">
         {filteredRestaurants.map((restaurant) => (
         <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}><RestCard resData={restaurant} /></Link>
       )
